@@ -24,7 +24,7 @@ class Login extends CI_Controller
 	{
 		# code...
 		$correo = $this->input->post('email');
-		$contrasena = md5($this->input->post('contrasena'));
+		$contrasena = $this->input->post('contrasena');
 		$bandera = $this->model_usuario->iniciarsesion($correo,$contrasena);
 		if (count($bandera) > 0) {
 			$datauser = array('id' => $bandera->id, 

@@ -36,7 +36,7 @@ class Marca extends CI_Controller
 		$datasesion = $this->session->get_userdata();
 		if ($datasesion['id']!=NULL) {
 		$datos = array('id_marca' => NULL, 'nombre_marca' => $this->input->post('nombre') );
-		$this->form_validation->set_rules('nombre', 'Nombre', 'required|max_length[100]|alpha|is_unique[marca_producto.nombre_marca]');
+		$this->form_validation->set_rules('nombre', 'Nombre', 'required|max_length[100]|is_unique[marca_producto.nombre_marca]');
 
 		if ($this->form_validation->run() != false) {
 			# code...
@@ -94,7 +94,7 @@ class Marca extends CI_Controller
 		if ($datasesion['id']!=NULL) {
 
 		$datos = array('id_marca' => $this->input->post('id'), 'nombre_marca' => $this->input->post('nombre') );
-		$this->form_validation->set_rules('nombre', 'Nombre', 'required|max_length[100]|alpha|is_unique[marca_producto.nombre_marca]');
+		$this->form_validation->set_rules('nombre', 'Nombre', 'required|max_length[100]|is_unique[marca_producto.nombre_marca]');
 
 		if ($this->form_validation->run() != false) {
 			# code...

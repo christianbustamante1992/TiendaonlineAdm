@@ -23,6 +23,7 @@
         <?php 
         $atributos = array('type' => 'text', 
                            'name' => 'nombre',
+                           'autofocus' => 'true',
                            'class' => 'w-50 p-0 input-default',
                            'placeholder' => ' Ingrese el nombre del tipo de producto',
                            'required' => 'true'

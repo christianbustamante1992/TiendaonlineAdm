@@ -25,6 +25,7 @@
           $atributos = array('type' => 'text', 
                              'name' => 'nombre',
                              'class' => 'w-50 p-0 input-default',
+                             'autofocus' => 'true',
                              'placeholder' => ' Ingrese el nombre de la marca',
                              'required' => 'true'
                             );

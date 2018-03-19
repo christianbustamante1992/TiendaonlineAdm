@@ -83,7 +83,8 @@
     $atributos = array('type' => 'date', 
                        'name' => 'fechanacimiento',
                        'class' => 'w-50 p-0',
-                       'required' => 'true'                       
+                       'required' => 'true',
+                       'max' => '2000-12-31'                       
                       );
     echo form_input($atributos); 
     ?>

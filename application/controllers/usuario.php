@@ -72,7 +72,7 @@ class Usuario extends CI_Controller
 			'correo' => $this->input->post('correo'),
 			'telefono' => $this->input->post('telefono'),
 			'fecha_nacimiento' => $this->input->post('fechanacimiento'),
-			'contrasena' => md5($this->input->post('contrasena'))
+			'contrasena' => $this->input->post('contrasena')
 		);
 
 		$this->form_validation->set_rules('cedula', 'Cedula', 'required|min_length[10]|max_length[10]|numeric|is_unique[usuario.cedula]');
@@ -120,7 +120,7 @@ class Usuario extends CI_Controller
 			'correo' => $this->input->post('correo'),
 			'telefono' => $this->input->post('telefono'),
 			'fecha_nacimiento' => $this->input->post('fechanacimiento'),
-			'contrasena' => md5($this->input->post('contrasena'))
+			'contrasena' => $this->input->post('contrasena')
 		);
 
 		$this->form_validation->set_rules('cedula', 'Cedula', 'required|min_length[10]|max_length[10]|numeric');

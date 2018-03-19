@@ -35,7 +35,7 @@ class Tipoproducto extends CI_Controller
 		$datasesion = $this->session->get_userdata();
 		if ($datasesion['id']!=NULL) {
 			$datos = array('id_tipoproducto' => NULL, 'nombre_tipoproducto' => $this->input->post('nombre') );
-		$this->form_validation->set_rules('nombre', 'Nombre', 'required|max_length[100]|alpha|is_unique[tipo_producto.nombre_tipoproducto]');
+		$this->form_validation->set_rules('nombre', 'Nombre', 'required|max_length[100]|is_unique[tipo_producto.nombre_tipoproducto]');
 
 		if ($this->form_validation->run() != false) {
 			# code...
@@ -95,7 +95,7 @@ class Tipoproducto extends CI_Controller
 		$datasesion = $this->session->get_userdata();
 		if ($datasesion['id']!=NULL) {
 			$datos = array('id_tipoproducto' => $this->input->post('id'), 'nombre_tipoproducto' => $this->input->post('nombre') );
-		$this->form_validation->set_rules('nombre', 'Nombre', 'required|max_length[100]|alpha|is_unique[tipo_producto.nombre_tipoproducto]');
+		$this->form_validation->set_rules('nombre', 'Nombre', 'required|max_length[100]|is_unique[tipo_producto.nombre_tipoproducto]');
 
 		if ($this->form_validation->run() != false) {
 			# code...

@@ -24,6 +24,21 @@
             <?php echo form_error('nombre','<span class="error">','</span>'); ?>
                 
         </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Descripcion</label><br>
+            <?php 
+            $atributos = array('type' => 'textarea', 
+                               'name' => 'descripcion',
+                               'class' => 'w-50 p-0',
+                               'placeholder' => ' Ingrese la descripcion del producto',
+                               'required' => 'true'
+                              );
+            echo form_input($atributos); 
+            ?>
+            <br>
+            <?php echo form_error('descripcion','<span class="error">','</span>'); ?>
+                
+        </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Stock</label><br>
             <?php 
@@ -84,7 +99,7 @@
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Marca</label><br>
-            <select name="marca" class="w-50 p-0">
+            <select name="marca" class="w-50 p-0" required="true">
               <?php foreach ($marca as $key ) {?>
                 
               <option value="<?php echo $key->id_marca ?>" ><?php echo $key->nombre_marca; ?></option>
@@ -93,7 +108,7 @@
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Tipo de Producto</label><br>
-            <select name="tipoproducto" class="w-50 p-0">
+            <select name="tipoproducto" class="w-50 p-0" required="true">
             	<?php foreach ($tipoproducto as $key ) {?>
                 
               <option value="<?php echo $key->id_tipoproducto ?>" ><?php echo $key->nombre_tipoproducto; ?></option>

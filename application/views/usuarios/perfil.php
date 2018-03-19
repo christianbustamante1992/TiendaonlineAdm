@@ -76,6 +76,7 @@
     $atributos = array('type' => 'date', 
                        'name' => 'fechanacimiento',
                        'class' => 'form-control',
+                       'max' => '2000-12-31',
                        'placeholder' => 'Ingrese su nombre',
                        'required' => 'true',
                        'value' => $usuario->fecha_nacimiento

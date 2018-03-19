@@ -33,6 +33,22 @@
         
   </div>
   <div class="form-group">
+            <label for="exampleInputEmail1">Descripcion</label><br>
+            <?php 
+            $atributos = array('type' => 'textarea', 
+                               'name' => 'descripcion',
+                               'class' => 'w-50 p-0',
+                               'placeholder' => ' Ingrese la descripcion del producto',
+                               'required' => 'true',
+                               'value' => $producto->descripcion
+                              );
+            echo form_input($atributos); 
+            ?>
+            <br>
+            <?php echo form_error('descripcion','<span class="error">','</span>'); ?>
+                
+        </div>
+  <div class="form-group">
     <label for="exampleInputPassword1">Stock</label><br>
     <?php 
     $atributos = array('type' => 'text', 
