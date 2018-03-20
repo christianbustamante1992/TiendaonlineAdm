@@ -59,6 +59,7 @@ $route['restdetallecarrito']['post'] = 'restdetallecarrito/index';
 $route['restdetallecarrito/(:num)']['put'] = 'restdetallecarrito/index/$1';
 $route['restdetallecarrito/(:num)']['delete'] = 'restdetallecarrito/index/$1';
 
+
 $route['restproducto']['get'] = 'restproducto/index';
 $route['restproducto/(:num)']['get'] = 'restproducto/find/$1';
 $route['restproducto/(:num)']['put'] = 'restproducto/index/$1';

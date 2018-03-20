@@ -19,7 +19,7 @@ class Model_restdetallecarrito extends CI_Model
 
 		if (! is_null($id)) {
 			# code...
-			$query = $this->db->select('*')->from('detalle_carrito')->where('id',$id)->get();
+			$query = $this->db->select('*')->from('detalle_carrito')->where('id_carritodetalle',$id)->get();
 			if ($query->num_rows() === 1) {
 				# code...
 				return $query->row_array();
@@ -28,7 +28,7 @@ class Model_restdetallecarrito extends CI_Model
 			return NULL;
 		}
 
-			$query = $this->db->select('*')->from('detalle_carrito')->get();
+			$query = $this->db->query("SELECT *FROM detalle_carrito, producto WHERE detalle_carrito.id_producto=producto.id;");
 			if ($query->num_rows() > 0) {
 				# code...
 				return $query->result_array();
@@ -53,7 +53,7 @@ class Model_restdetallecarrito extends CI_Model
 	public function update($id,$producto)
 	{
 		# code...
-		$this->db->set($this->setdetallecarrito($producto))->where('id',$id)->update('detalle_carrito');
+		$this->db->set($this->setdetallecarrito($producto))->where('id_carritodetalle',$id)->update('detalle_carrito');
 		if ($this->db->affected_rows()===1) {
 			# code...
 			return TRUE;
@@ -65,7 +65,7 @@ class Model_restdetallecarrito extends CI_Model
 	public function delete($id)
 	{
 		# code...
-		$this->db->where('id',$id)->delete('detalle_carrito');
+		$this->db->where('id_carritodetalle',$id)->delete('detalle_carrito');
 		if ($this->db->affected_rows()===1) {
 			# code...
 			return TRUE;

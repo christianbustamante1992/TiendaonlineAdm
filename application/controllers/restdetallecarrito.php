@@ -79,7 +79,7 @@ class Restdetallecarrito extends REST_Controller
 
 		$productos = $this->model_restdetallecarrito->delete($id);
 
-		if (! is_null($producto)) {
+		if (! is_null($productos)) {
 			# code...
 			$this->response(array('response' => 'Producto Eliminado'),200);
 		}else{

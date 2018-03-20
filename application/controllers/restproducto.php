@@ -44,7 +44,7 @@ class Restproducto extends REST_Controller
 
 		$productos = $this->model_restproducto->update($id,$this->put('producto'));
 
-		if (! is_null($producto)) {
+		if (! is_null($productos)) {
 			# code...
 			$this->response(array('response' => 'Producto Actualizado'),200);
 		}else{

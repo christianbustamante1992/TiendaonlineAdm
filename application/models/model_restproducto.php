@@ -28,7 +28,7 @@ class Model_restproducto extends CI_Model
 			return NULL;
 		}
 
-			$query = $this->db->query("SELECT * FROM producto,marca_producto WHERE producto.id_marcaproducto = marca_producto.id_marca;");
+			$query = $this->db->query("SELECT * FROM producto,marca_producto WHERE producto.id_marcaproducto = marca_producto.id_marca AND producto.stock > 0;");
 			if ($query->num_rows() > 0) {
 				# code...
 				return $query->result_array();
