@@ -115,7 +115,7 @@ class Producto extends CI_Controller
 		# code...
 		$datasesion = $this->session->get_userdata();
 		if ($datasesion['id']!=NULL) {
-		$this->form_validation->set_rules('nombre', 'Nombre', 'required|max_length[200]|is_unique[producto.nombre]');
+		$this->form_validation->set_rules('nombre', 'Nombre', 'required|max_length[200]');
 		$this->form_validation->set_rules('descripcion', 'Descripcion', 'required|max_length[200]');
 		$this->form_validation->set_rules('stock', 'Stock', 'required|numeric|min_length[1]');
 		$this->form_validation->set_rules('precioa', 'Precio A', 'required|decimal|min_length[4]');

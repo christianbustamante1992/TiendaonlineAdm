@@ -94,7 +94,7 @@ class Marca extends CI_Controller
 		if ($datasesion['id']!=NULL) {
 
 		$datos = array('id_marca' => $this->input->post('id'), 'nombre_marca' => $this->input->post('nombre') );
-		$this->form_validation->set_rules('nombre', 'Nombre', 'required|max_length[100]|is_unique[marca_producto.nombre_marca]');
+		$this->form_validation->set_rules('nombre', 'Nombre', 'required|max_length[100]');
 
 		if ($this->form_validation->run() != false) {
 			# code...
