@@ -19,7 +19,7 @@ class Model_restdetallecarrito extends CI_Model
 
 		if (! is_null($id)) {
 			# code...
-			$query = $this->db->select('*')->from('detalle_carrito')->where('id_carritodetalle',$id)->get();
+			$query = $this->db->select('*')->from('detalle_carrito')->where('id_detallecarrito',$id)->get();
 			if ($query->num_rows() === 1) {
 				# code...
 				return $query->row_array();
@@ -41,32 +41,31 @@ class Model_restdetallecarrito extends CI_Model
 	public function save($producto)
 	{
 		# code...
-		$consulta = $this->db->insert('detalle_carrito', $producto);
-		if ($consulta == true) {
+		$this->db->set($this->setproducto($producto))->insert('detalle_carrito');
+		if ($this->db->affected_rows()===1) {
 			# code...
-			return true;
-		}else{
-			return NULL;
+			return $this->db->insert_id();
 		}
+
+		return NULL;
 	}
 
 	public function update($id,$producto)
 	{
 		# code...
-		$this->db->where('id_carritodetalle',$id);
-		$resultado = $this->db->update('detalle_carrito',$producto);
-		if ($resultado === true) {
+		$this->db->set($this->setproducto($producto))->where('id_detallecarrito',$id)->update('detalle_carrito');
+		if ($this->db->affected_rows()===1) {
 			# code...
-			return true;
-		}else{
-			return NULL;
+			return TRUE;
 		}
+
+		return NULL;
 	}
 
 	public function delete($id)
 	{
 		# code...
-		$this->db->where('id_carritodetalle',$id)->delete('detalle_carrito');
+		$this->db->where('id_detallecarrito',$id)->delete('detalle_carrito');
 		if ($this->db->affected_rows()===1) {
 			# code...
 			return TRUE;
@@ -74,6 +73,20 @@ class Model_restdetallecarrito extends CI_Model
 
 		return NULL;
 
+	}
+
+
+	private function setproducto($producto)
+	{
+		# code...
+		$data = array('id_producto' => $producto['id_producto'], 
+					  'id_usuario' => $producto['id_usuario'],
+					  'precio' => $producto['precio'],
+					  'cantidad' => $producto['cantidad'],
+					  'totalimporte' => $producto['totalimporte']
+					  
+					 );
+		return $data;
 	}
 
 	

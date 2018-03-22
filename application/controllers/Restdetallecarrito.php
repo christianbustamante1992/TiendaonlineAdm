@@ -33,12 +33,18 @@ class Restdetallecarrito extends REST_Controller
 		}
 	}
 
-	public function post($producto)
+	public function index_post()
 	{
 		
-		$productos = $this->model_restdetallecarrito->save($producto);
+		# code...
+		if (! $this->post('producto')) {
+			# code...
+			$this->response(NULL, 400);
+		}
 
-		if (! is_null($productos)) {
+		$productos = $this->model_restdetallecarrito->save($this->post('producto'));
+
+		if (! is_null($producto)) {
 			# code...
 			$this->response(array('response' => $productos),200);
 		}else{
@@ -46,13 +52,19 @@ class Restdetallecarrito extends REST_Controller
 		}
 	}
 
-	public function put($id,$producto)
+	public function index_put($id)
 	{
 		
 
-		$productos = $this->model_restdetallecarrito->update($id,$producto);
+		# code...
+		if ((! $this->put('producto'))|| (! $id)) {
+			# code...
+			$this->response(NULL, 400);
+		}
 
-		if (! is_null($productos)) {
+		$productos = $this->model_restdetallecarrito->update($id,$this->put('producto'));
+
+		if (! is_null($producto)) {
 			# code...
 			$this->response(array('response' => 'Producto Actualizado'),200);
 		}else{
@@ -60,7 +72,7 @@ class Restdetallecarrito extends REST_Controller
 		}
 	}
 
-	public function delete($id)
+	public function index_delete($id)
 	{
 		# code...
 		if (! $id) {

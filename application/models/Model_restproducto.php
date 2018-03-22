@@ -42,14 +42,30 @@ class Model_restproducto extends CI_Model
 	public function update($id,$producto)
 	{
 		# code...
-		$this->db->where('id',$id);
-		$resultado = $this->db->update('producto',$producto);
-		if ($resultado === true) {
+		$this->db->set($this->setproducto($producto))->where('id',$id)->update('producto');
+		if ($this->db->affected_rows()===1) {
 			# code...
-			return true;
-		}else{
-			return NULL;
+			return TRUE;
 		}
+
+		return NULL;
+	}
+
+	private function setproducto($producto)
+	{
+		# code...
+		$data = array('id_tipoproducto' => $producto['id_tipoproducto'], 
+					  'id_marcaproducto' => $producto['id_marcaproducto'],
+					  'nombre' => $producto['nombre'],
+					  'descripcion' => $producto['descripcion'],
+					  'stock' => $producto['stock'],
+					  'precio_a' => $producto['precio_a'],
+					  'precio_b' => $producto['precio_b'],
+					  'precio_c' => $producto['precio_c'],
+					  'nombre_foto' => $producto['nombre_foto']
+
+					 );
+		return $data;
 	}
 
 	
