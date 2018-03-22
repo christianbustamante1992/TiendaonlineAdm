@@ -29,21 +29,16 @@ class Restdetallecarrito extends REST_Controller
 			# code...
 			$this->response(array('response' => $productos),200);
 		}else{
-			$this->response(array('error' => 'No existen productos'),404);
+			$this->response(array('response' => 'No existen productos'),200);
 		}
 	}
 
-	public function index_post()
+	public function post($producto)
 	{
-		# code...
-		if (! $this->post('producto')) {
-			# code...
-			$this->response(NULL, 400);
-		}
+		
+		$productos = $this->model_restdetallecarrito->save($producto);
 
-		$productos = $this->model_restdetallecarrito->save($this->post('producto'));
-
-		if (! is_null($producto)) {
+		if (! is_null($productos)) {
 			# code...
 			$this->response(array('response' => $productos),200);
 		}else{
@@ -51,17 +46,13 @@ class Restdetallecarrito extends REST_Controller
 		}
 	}
 
-	public function index_put($id)
+	public function put($id,$producto)
 	{
-		# code...
-		if ((! $this->put('producto'))|| (! $id)) {
-			# code...
-			$this->response(NULL, 400);
-		}
+		
 
-		$productos = $this->model_restdetallecarrito->update($id,$this->put('producto'));
+		$productos = $this->model_restdetallecarrito->update($id,$producto);
 
-		if (! is_null($producto)) {
+		if (! is_null($productos)) {
 			# code...
 			$this->response(array('response' => 'Producto Actualizado'),200);
 		}else{
@@ -69,7 +60,7 @@ class Restdetallecarrito extends REST_Controller
 		}
 	}
 
-	public function index_delete($id)
+	public function delete($id)
 	{
 		# code...
 		if (! $id) {

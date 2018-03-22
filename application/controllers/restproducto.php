@@ -34,15 +34,10 @@ class Restproducto extends REST_Controller
 	}
 
 	
-	public function index_put($id)
+	public function put($id,$producto)
 	{
-		# code...
-		if ((! $this->put('producto'))|| (! $id)) {
-			# code...
-			$this->response(NULL, 400);
-		}
-
-		$productos = $this->model_restproducto->update($id,$this->put('producto'));
+		
+		$productos = $this->model_restproducto->update($id,$producto);
 
 		if (! is_null($productos)) {
 			# code...

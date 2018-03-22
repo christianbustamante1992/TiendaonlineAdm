@@ -41,25 +41,26 @@ class Model_restdetallecarrito extends CI_Model
 	public function save($producto)
 	{
 		# code...
-		$this->db->set($this->setdetallecarrito($producto))->insert('detalle_carrito');
-		if ($this->db->affected_rows()===1) {
+		$consulta = $this->db->insert('detalle_carrito', $producto);
+		if ($consulta == true) {
 			# code...
-			return $this->db->insert_id();
+			return true;
+		}else{
+			return NULL;
 		}
-
-		return NULL;
 	}
 
 	public function update($id,$producto)
 	{
 		# code...
-		$this->db->set($this->setdetallecarrito($producto))->where('id_carritodetalle',$id)->update('detalle_carrito');
-		if ($this->db->affected_rows()===1) {
+		$this->db->where('id_carritodetalle',$id);
+		$resultado = $this->db->update('detalle_carrito',$producto);
+		if ($resultado === true) {
 			# code...
-			return TRUE;
+			return true;
+		}else{
+			return NULL;
 		}
-
-		return NULL;
 	}
 
 	public function delete($id)
@@ -75,18 +76,7 @@ class Model_restdetallecarrito extends CI_Model
 
 	}
 
-	private function setdetallecarrito($producto)
-	{
-		# code...
-		$data = array('id_producto' => $producto['id_producto'], 
-					  'id_usuario' => $producto['id_usuario'],
-					  'precio' => $producto['precio'],
-					  'cantidad' => $producto['cantidad'],
-					  'totalimporte' => $producto['totalimporte']
-					  
-					 );
-		return $data;
-	}
+	
 
 }
 
