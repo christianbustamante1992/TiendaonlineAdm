@@ -38,12 +38,15 @@ class Restproducto extends REST_Controller
 	{
 		
 		# code...
-		if ((! $this->put('producto'))|| (! $id)) {
+		if ((! $this->put()) || (! $id)) {
 			# code...
-			$this->response(NULL, 400);
+			$this->response("No entro", 400);
+			//echo "hola";
 		}
 
-		$productos = $this->model_restproducto->update($id,$this->put('producto'));
+		//echo json_encode($this->put());
+
+		$productos = $this->model_restproducto->update($id,$this->put());
 
 		if (! is_null($productos)) {
 			# code...
